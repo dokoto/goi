@@ -1,9 +1,7 @@
 <template>
-  <div class="order-row d-flex f-row f-align-items-end" :id="order.order_id"
-       :style="{ backgroundImage: `url('/static/${order.status}.jpg')` }">
-    <div class="icon-container d-flex f-row f-justify-center f-align-items-center">
-      <i :class="[`icon-${order.status}`, 'status-icon']" />
-    </div>
+  <div class="order-row d-flex f-row f-align-items-center"
+       :id="order.order_id">
+    <i :class="[`icon-${order.status}`, 'status-icon']" />
     <div class="data d-flex f-row f-space-around f-align-items-center">
       <div>
         <div class="data-set d-flex f-row f-align-items-center">
@@ -28,63 +26,40 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
+  name: 'row-order-md',
   props: ['order']
 };
 </script>
 
 <style lang="postcss" scoped>
-@import '../../../styles/base.scss';
-@import '../../../styles/flex.scss';
-
+@import '../../../../styles/base.scss';
+@import '../../../../styles/flex.scss';
 .order-row {
-  position: relative;
   border: solid 1px #dedede;
-  height: 80%;
+  height: 100px;
   margin: 0.8rem;
-  background-size: cover;
-  background-repeat: no-repeat;
   border-radius: 5px;
-}
-.icon-container {
-  border-radius: 50%;
-  background-color: rgba(239, 239, 239, 0.67);
-  position: absolute;
-  left: 0.5rem;
-  top: 0.5rem;
-  left: 0.5rem;
-  top: 0.5rem;
-  width: 5rem;
-  height: 5rem;
-}
-.status-icon {
-  width: 100%;
-  height: 100%;
-  margin: 0.8rem;
-}
-.date,
-.address,
-.status-photo,
-.comments {
-  display: initial;
-}
-.icon-data {
-  width: 1rem;
-  height: 1rem;
-}
-.data-set {
-  margin-bottom: 0.4rem;
-}
-.col {
-  margin-left: 0.4rem;
-}
-.bg-lg {
-  background-image: url('');
-}
-.data {
-  background-color: rgba(239, 239, 239, 0.67);
-  padding-top: 0.5rem;
-  width: 100%;
+
+  .status-icon {
+    margin-left: 2rem;
+    width: 20%;
+    height: 70%;
+  }
+  .data {
+    width: 80%;
+    .data-set {
+      margin-bottom: 0.4rem;
+      .icon-data {
+        width: 1rem;
+        height: 1rem;
+      }
+      .col {
+        margin-left: 0.4rem;
+      }
+    }
+  }
 }
 </style>

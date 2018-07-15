@@ -5,9 +5,10 @@
            v-model.trim="qs"
            class="filter" />
     <div class="pager d-flex f-row f-justify-center f-align-items-center">
-      <i class="icon-prev icon-nav f-grow-1" @click="prevPage" />
-      {{ page }} / {{ total }}
-      <i class="icon-next icon-nav f-grow-1"  @click="nextPage" />
+      <i class="icon-prev icon-nav f-grow-1"
+         @click="prevPage" /> {{ page }} / {{ total }}
+      <i class="icon-next icon-nav f-grow-1"
+         @click="nextPage" />
     </div>
     <transition-group class="orders-list"
                       tag="div"
@@ -24,7 +25,7 @@
 import debounce from 'lodash/debounce';
 import { mapState, mapActions, mapGetters } from 'vuex';
 import { EMPTY_STRING } from '@/common/constants';
-import RowOrder from '../components/RowOrder';
+import RowOrder from '../components/RowOrder/RowOrder';
 
 export default {
   components: { RowOrder },
@@ -65,15 +66,15 @@ export default {
   font-size: 2rem;
   margin: 0.8rem;
   padding: 0.2rem;
-  border: solid 1px #dedede;
+  border: solid 1px $primary-color;
   border-radius: 5px;
-  background-color: white;
+  background-color: $secundary-color;
 }
 .pager {
   font-size: 2rem;
-}
-.icon-nav {
-  width: 2.5rem;
-  height: 2.5rem;
+  .icon-nav {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
 </style>
