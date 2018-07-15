@@ -1,34 +1,47 @@
-.icon-small-menu {
-  background-image: url('./assets/icons/baseline-menu-24px.svg');
+.icon-delivered {
+  background-image: url('../assets/icons/delivered.svg');
   background-size: 100% 100%;
-  width: 1.5rem;
-  height: 1.5rem;
 }
 
-.icon-small-add {
-  background-image: url('./assets/icons/baseline-add_circle_outline-24px.svg');
+.icon-error {
+  background-image: url('../assets/icons/error.svg');
   background-size: 100% 100%;
-  width: 1.5rem;
-  height: 1.5rem;
 }
 
-.icon-small-expand-less {
-  background-image: url('./assets/icons/baseline-expand_less-24px.svg');
+.icon-pending {
+  background-image: url('../assets/icons/pending.svg');
   background-size: 100% 100%;
-  width: 1.5rem;
-  height: 1.5rem;
 }
 
-.icon-small-expand-more {
-  background-image: url('./assets/icons/baseline-expand_more-24px.svg');
+.icon-shipped {
+  background-image: url('../assets/icons/shipped.svg');
   background-size: 100% 100%;
-  width: 1.5rem;
-  height: 1.5rem;
 }
 
-.icon-small-close {
-  background-image: url('./assets/icons/baseline-close-24px.svg');
+.icon-date {
+  background-image: url('../assets/icons/baseline-date_range-24px.svg');
   background-size: 100% 100%;
-  width: 1.5rem;
-  height: 1.5rem;
+}
+
+.icon-name {
+  background-image: url('../assets/icons/baseline-face-24px.svg');
+  background-size: 100% 100%;
+}
+
+.icon-address {
+  background-image: url('../assets/icons/baseline-home-24px.svg');
+  background-size: 100% 100%;
+}
+
+.icon-phone {
+  background-image: url('../assets/icons/baseline-phone-24px.svg');
+  background-size: 100% 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100 {
+  height: 100%;
 }
