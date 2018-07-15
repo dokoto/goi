@@ -2,26 +2,37 @@
 
 > Job test
 
-## Build Setup
+## Comandos
 
 ``` bash
-# install dependencies
-npm install
+# Instalar dependecias
+$> npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+# Servir en modo desarrollo 8000
+$> npm run dev
 
-# build for production with minification
-npm run build
+# Construir release
+$> npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# Construir release con informe de peso
+$> npm run build --report
 
-# run unit tests
-npm run unit
+# Ejecutar test unitarios
+$> npm run unit
 
-# run all tests
-npm test
+# Desplegar release en local 5000
+$> npm run build
+$> npm run depoy
+
+# Ejecutar test de comportamiento
+$> npm run build
+$> npm run depoy
+$> npm run e2e
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Caracteristicas
+- Listado de pedidos
+- Filtrado de pedidos. Se realiza usando un input de texto libre que buscan coincidencias en todos los campos de cada pedido
+  SI : se desea buscar por estado se escribe: 'shipped', 'error', 'delivered', 'pending'
+- Paginado
+- Detalle del pedido. Permite modificar los datos de pedido en local

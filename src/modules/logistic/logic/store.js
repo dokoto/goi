@@ -1,4 +1,4 @@
-import { getOrders } from '@/common/api';
+import { getOrders, saveOrder } from '@/common/api';
 import { EMPTY_ARRAY } from '@/common/constants';
 import { RECEIVE_ORDERS, SET_ORDERS, SET_PAGE, SET_ORDER } from './types';
 
@@ -49,7 +49,8 @@ const actions = {
       commit(SET_PAGE, state.page - 1);
     }
   },
-  saveChanges({ commit }, order) {
+  async saveChanges({ commit }, order) {
+    await saveOrder(order);
     commit(SET_ORDER, order);
   }
 };

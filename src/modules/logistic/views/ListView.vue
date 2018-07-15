@@ -1,13 +1,17 @@
 <template>
-  <section class="orders-list-container d-flex f-column h-100 relative">
+  <section class="orders-list-container d-flex f-column h-100 relative"
+           data-test="list-view">
     <input type="text"
            placeholder="Free text search"
            v-model.trim="qs"
            class="filter" />
     <div class="pager d-flex f-row f-justify-center f-align-items-center">
       <i class="icon-prev icon-nav f-grow-1"
-         @click="prevPage" /> {{ page }} / {{ total }}
+         data-test="prev"
+         @click="prevPage" />
+         <span>{{ page }}/{{ total }}</span>
       <i class="icon-next icon-nav f-grow-1"
+         data-test="next"
          @click="nextPage" />
     </div>
     <transition-group class="orders-list"
@@ -15,6 +19,7 @@
                       enter-active-class="animated fadeIn"
                       leave-active-class="animated fadeOut">
       <row-order v-for="order in orderPager"
+                 data-test="orders"
                  :key="order.order_id"
                  :order="order"
                  @onDetail="showDetail" />
