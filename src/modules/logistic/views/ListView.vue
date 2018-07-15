@@ -4,11 +4,16 @@
            placeholder="Free text search"
            v-model.trim="qs"
            class="filter" />
+    <div class="pager d-flex f-row f-justify-center f-align-items-center">
+      <i class="icon-prev icon-nav f-grow-1" @click="prevPage" />
+      {{ page }} / {{ total }}
+      <i class="icon-next icon-nav f-grow-1"  @click="nextPage" />
+    </div>
     <transition-group class="orders-list"
                       tag="div"
-                      enter-active-class="animated bounceInLeft"
-                      leave-active-class="animated bounceInRight">
-      <row-order v-for="order in filterOrders"
+                      enter-active-class="animated fadeIn"
+                      leave-active-class="animated fadeOut">
+      <row-order v-for="order in orderPager"
                  :key="order.order_id"
                  :order="order" />
     </transition-group>
@@ -17,7 +22,7 @@
 
 <script>
 import debounce from 'lodash/debounce';
-import { mapState } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 import { EMPTY_STRING } from '@/common/constants';
 import RowOrder from '../components/RowOrder';
 
@@ -29,7 +34,8 @@ export default {
     };
   },
   computed: {
-    ...mapState('logistic', ['filterOrders'])
+    ...mapState('logistic', ['page', 'total']),
+    ...mapGetters('logistic', ['orderPager'])
   },
   mounted() {
     this.$store.dispatch('logistic/getOrders');
@@ -38,6 +44,9 @@ export default {
     qs: debounce(function(val) {
       this.$store.dispatch('logistic/filter', val);
     }, 500)
+  },
+  methods: {
+    ...mapActions('logistic', ['nextPage', 'prevPage'])
   }
 };
 </script>
@@ -59,5 +68,12 @@ export default {
   border: solid 1px #dedede;
   border-radius: 5px;
   background-color: white;
+}
+.pager {
+  font-size: 2rem;
+}
+.icon-nav {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 </style>
