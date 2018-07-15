@@ -1,0 +1,17 @@
+languaje: node_js
+node_js:
+    - "8.10.0"
+branches:
+  only:
+    - feature-works-all-sizes
+before_script:
+  - npm install -g firebase-tools
+  - npm install
+script:
+    - npm run build
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN --non-interactive
+notifications:
+  email:
+    on_failure: change
+    on_success: change

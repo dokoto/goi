@@ -1,6 +1,6 @@
 <template>
   <div class="order-row d-flex f-row f-align-items-center"
-       :id="order.order_id">
+       :id="order.order_id" @click="$emit('onDetail', order.order_id)">
     <i :class="[`icon-${order.status}`, 'status-icon']" />
     <div class="data d-flex f-column f-align-items-center">
       <div class="data-set d-flex f-row f-align-items-center">

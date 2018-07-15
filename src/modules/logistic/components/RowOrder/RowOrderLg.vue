@@ -1,6 +1,6 @@
 <template>
   <div class="order-row d-flex f-row f-align-items-end"
-       :id="order.order_id"
+       :id="order.order_id"  @click="$emit('onDetail', order.order_id)"
        :style="{ backgroundImage: `url('/static/${order.status}.jpg')` }">
     <div class="icon-container d-flex f-row f-justify-center f-align-items-center">
       <i :class="[`icon-${order.status}`, 'status-icon']" />

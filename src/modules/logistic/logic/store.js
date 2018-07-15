@@ -1,6 +1,6 @@
 import { getOrders } from '@/common/api';
 import { EMPTY_ARRAY } from '@/common/constants';
-import { RECEIVE_ORDERS, SET_ORDERS, SET_PAGE } from './types';
+import { RECEIVE_ORDERS, SET_ORDERS, SET_PAGE, SET_ORDER } from './types';
 
 const state = {
   orders: EMPTY_ARRAY,
@@ -14,8 +14,9 @@ const getters = {
   orderPager: curr =>
     curr.filterOrders.slice(
       (curr.page - 1) * curr.ordersByPage,
-      ((curr.page - 1) * curr.ordersByPage) + curr.ordersByPage
-    )
+      (curr.page - 1) * curr.ordersByPage + curr.ordersByPage
+    ),
+  orderId: curr => id => curr.orders.find(o => o.order_id == id)
 };
 
 const actions = {
@@ -47,6 +48,9 @@ const actions = {
     if (state.page - 1 > 0) {
       commit(SET_PAGE, state.page - 1);
     }
+  },
+  saveChanges({ commit }, order) {
+    commit(SET_ORDER, order);
   }
 };
 
@@ -64,6 +68,20 @@ const mutations = {
   },
   [SET_PAGE](currState, page) {
     currState.page = page;
+  },
+  [SET_ORDER](currState, order) {
+    currState.orders = currState.orders.map(o => {
+      if (o.order_id === order.order_id) {
+        return order;
+      }
+      return o;
+    });
+    currState.filterOrders = currState.filterOrders.map(o => {
+      if (o.order_id === order.order_id) {
+        return order;
+      }
+      return o;
+    });
   }
 };
 

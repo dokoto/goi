@@ -1,6 +1,6 @@
 <template>
   <component :order="order"
-             :is="`row-order-${$mq}`" />
+             :is="`row-order-${$mq}`" @onDetail="$emit('onDetail', order.order_id)"/>
 </template>
 
 <script>

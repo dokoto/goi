@@ -1,5 +1,5 @@
 <template>
-  <section class="orders-list-container d-flex f-column h-100">
+  <section class="orders-list-container d-flex f-column h-100 relative">
     <input type="text"
            placeholder="Free text search"
            v-model.trim="qs"
@@ -16,8 +16,17 @@
                       leave-active-class="animated fadeOut">
       <row-order v-for="order in orderPager"
                  :key="order.order_id"
-                 :order="order" />
+                 :order="order"
+                 @onDetail="showDetail" />
     </transition-group>
+    <transition enter-active-class="animated zoomIn"
+                leave-active-class="animated zoomOutLeft">
+      <order-detail v-show="showOrder"
+                    :order="orderId"
+                    @closeDetail="showOrder = false"
+                    @saveChanges="saveChanges"
+                    class="modal"></order-detail>
+    </transition>
   </section>
 </template>
 
@@ -26,12 +35,15 @@ import debounce from 'lodash/debounce';
 import { mapState, mapActions, mapGetters } from 'vuex';
 import { EMPTY_STRING } from '@/common/constants';
 import RowOrder from '../components/RowOrder/RowOrder';
+import OrderDetail from '../components/OrderDetail';
 
 export default {
-  components: { RowOrder },
+  components: { RowOrder, OrderDetail },
   data() {
     return {
-      qs: EMPTY_STRING
+      qs: EMPTY_STRING,
+      showOrder: false,
+      orderId: 0
     };
   },
   computed: {
@@ -47,7 +59,11 @@ export default {
     }, 500)
   },
   methods: {
-    ...mapActions('logistic', ['nextPage', 'prevPage'])
+    ...mapActions('logistic', ['nextPage', 'prevPage', 'saveChanges']),
+    showDetail(id) {
+      this.orderId = this.orderPager.find(o => o.order_id == id);
+      this.showOrder = true;
+    }
   }
 };
 </script>
@@ -66,8 +82,8 @@ export default {
   font-size: 2rem;
   margin: 0.8rem;
   padding: 0.2rem;
-  border: solid 1px $primary-color;
   border-radius: 5px;
+  border: solid 1px $primary-color;
   background-color: $secundary-color;
 }
 .pager {
