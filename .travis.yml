@@ -3,7 +3,7 @@ node_js:
     - "8.10.0"
 branches:
   only:
-    - feature-works-all-sizes
+    - feature-order-detail
 before_script:
   - npm install -g firebase-tools
   - npm install
