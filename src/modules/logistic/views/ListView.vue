@@ -1,14 +1,17 @@
 <template>
   <section class="orders-list-container d-flex f-column h-100">
     <input type="text"
-          placeholder="Free text search"
+           placeholder="Free text search"
            v-model.trim="qs"
            class="filter" />
-    <div class="orders-list">
+    <transition-group class="orders-list"
+                      tag="div"
+                      enter-active-class="animated bounceInLeft"
+                      leave-active-class="animated bounceInRight">
       <row-order v-for="order in filterOrders"
                  :key="order.order_id"
                  :order="order" />
-    </div>
+    </transition-group>
   </section>
 </template>
 
@@ -40,6 +43,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+@import 'animate.css/animate.min.css';
 @import '../../../styles/base.scss';
 @import '../../../styles/flex.scss';
 .orders-list {
@@ -53,5 +57,7 @@ export default {
   margin: 0.8rem;
   padding: 0.2rem;
   border: solid 1px #dedede;
+  border-radius: 5px;
+  background-color: white;
 }
 </style>

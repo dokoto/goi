@@ -45,6 +45,7 @@ export default {
   margin: 0.8rem;
   background-size: cover;
   background-repeat: no-repeat;
+  border-radius: 5px;
 }
 .icon-container {
   border-radius: 50%;

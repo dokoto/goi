@@ -27,6 +27,7 @@ export default {
   border: solid 1px #dedede;
   height: 100px;
   margin: 0.8rem;
+  border-radius: 5px;
 }
 
 .date,
